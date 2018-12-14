@@ -5,21 +5,23 @@
 
 #pragma once
 
+#ifndef SPDLOG_H
+#error "spdlog.h must be included before this file."
+#endif
+
 #include "spdlog/details/console_globals.h"
 #include "spdlog/details/null_mutex.h"
-#include "spdlog/spdlog.h"
 
 #include <cstdio>
 #include <memory>
 #include <mutex>
-#include <spdlog/details/console_globals.h>
 
 namespace spdlog {
 
 namespace sinks {
 
 template<typename TargetStream, typename ConsoleMutex>
-class stdout_sink SPDLOG_FINAL : public sink
+class stdout_sink final : public sink
 {
 public:
     using mutex_t = typename ConsoleMutex::mutex_t;

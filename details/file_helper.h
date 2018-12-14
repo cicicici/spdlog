@@ -5,10 +5,9 @@
 
 #pragma once
 
-// Helper class for file sink
-// When failing to open a file, retry several times(5) with small delay between
-// the tries(10 ms)
-// Throw spdlog_ex exception on errors
+// Helper class for file sinks.
+// When failing to open a file, retry several times(5) with a delay interval(10 ms).
+// Throw spdlog_ex exception on errors.
 
 #include "spdlog/details/log_msg.h"
 #include "spdlog/details/os.h"
@@ -146,7 +145,7 @@ public:
     }
 
 private:
-    FILE *fd_{nullptr};
+    std::FILE *fd_{nullptr};
     filename_t _filename;
 };
 } // namespace details
