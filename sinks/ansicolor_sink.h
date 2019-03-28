@@ -6,7 +6,7 @@
 #pragma once
 
 #ifndef SPDLOG_H
-#error "spdlog.h must be included before this file."
+#include "spdlog/spdlog.h"
 #endif
 
 #include "spdlog/details/console_globals.h"
@@ -131,6 +131,11 @@ public:
     {
         std::lock_guard<mutex_t> lock(mutex_);
         formatter_ = std::move(sink_formatter);
+    }
+
+    bool should_color()
+    {
+        return should_do_colors_;
     }
 
 private:
